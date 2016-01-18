@@ -24,7 +24,6 @@ public class GoogleSearchSeleniumTest {
     public void setUp(){
         driver = new FirefoxDriver();
         driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
-        driver.manage().timeouts().pageLoadTimeout(10, TimeUnit.SECONDS);
         if (!"Google".equals(driver.getTitle())){
             this.driver.get("https://www.google.com/ncr");
         }
