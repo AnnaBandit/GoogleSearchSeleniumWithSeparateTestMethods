@@ -46,7 +46,6 @@ public class GoogleSearchSeleniumTest {
         SeleniumPage seleniumPage = googleSearchPage.openFirstLink();
 
         new WebDriverWait(driver, 1000).until(ExpectedConditions.urlMatches("http://www.seleniumhq.org/"));
-        System.out.print(seleniumPage.headerText(driver));
         Assert.assertEquals(seleniumPage.headerText(driver), "Selenium - Web Browser Automation");
     }
 
