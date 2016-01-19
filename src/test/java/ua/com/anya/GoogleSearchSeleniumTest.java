@@ -36,15 +36,12 @@ public class GoogleSearchSeleniumTest {
 
     @Test
     public void testGoogleSearch(){
-
         GoogleSearchPage googleSearchPage = PageFactory.initElements(driver, GoogleSearchPage.class);
         googleSearchPage.find("Selenium automates browsers");
         assertEquals(10, googleSearchPage.searchResults.size());
-
         googleSearchPage.assertFirstLinkContains("Selenium automates browsers");
 
         SeleniumPage seleniumPage = googleSearchPage.openFirstLink();
-
         new WebDriverWait(driver, 1000).until(ExpectedConditions.urlMatches("http://www.seleniumhq.org/"));
         Assert.assertEquals(seleniumPage.headerText(driver), "Selenium - Web Browser Automation");
     }
