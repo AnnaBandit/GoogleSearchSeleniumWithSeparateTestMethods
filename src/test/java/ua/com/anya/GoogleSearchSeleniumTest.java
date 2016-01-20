@@ -7,10 +7,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import ua.com.anya.Pages.GoogleSearchPage;
-import ua.com.anya.Pages.SeleniumPage;
 
 import static org.junit.Assert.assertEquals;
-import static org.openqa.selenium.support.ui.ExpectedConditions.urlMatches;
 import static ua.com.anya.helpers.Helpers.sizeOf;
 
 public class GoogleSearchSeleniumTest {
@@ -37,10 +35,12 @@ public class GoogleSearchSeleniumTest {
         googleSearchPage.find("Selenium automates browsers");
         wait.until(sizeOf(googleSearchPage.searchResults, 10));
         googleSearchPage.assertFirstLinkContains("Selenium automates browsers");
+}
 
-        SeleniumPage seleniumPage = googleSearchPage.openFirstLink();
-        wait.until(urlMatches("http://www.seleniumhq.org/"));
-        assertEquals(seleniumPage.headerText(driver), "Selenium - Web Browser Automation");
+    @Test
+    public void testOpenFirstResultLink(){
+        GoogleSearchPage googleSearchPage = new GoogleSearchPage(driver);
+        googleSearchPage.findByTextAndOpenFirstResultLink(driver, "Selenium automates browsers");
+        assertEquals("Selenium - Web Browser Automation", driver.getTitle());
     }
-
 }
