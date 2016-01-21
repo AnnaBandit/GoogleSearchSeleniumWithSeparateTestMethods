@@ -11,17 +11,20 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.util.List;
 
 import static org.openqa.selenium.support.ui.ExpectedConditions.urlMatches;
-import static ua.com.anya.helpers.Helpers.sizeOf;
+import static ua.com.anya.helpers.CustomConditions.sizeOf;
 
 public class GoogleSearchPage {
     @FindBy(name = "q")
     public WebElement searchField;
 
     @FindBy(css = ".srg>.g")
-    public List<WebElement> searchResults;
+    public List<WebElement> results;
 
     public GoogleSearchPage(WebDriver driver){
         PageFactory.initElements(driver, this);
+        if (!"Google".equals(driver.getTitle())) {
+            driver.get("https://www.google.com/ncr");
+        }
     }
 
     public void find(String text){
@@ -29,16 +32,16 @@ public class GoogleSearchPage {
         searchField.sendKeys(text + Keys.ENTER);
     }
 
-    public void assertFirstLinkContains(String text){
-        searchResults.get(0).getText().contains(text);
+    public void openLink(int number){
+        results.get(number).findElement(By.cssSelector(".r>a")).click();
     }
 
     public void findByTextAndOpenFirstResultLink(WebDriver driver, String text){
         WebDriverWait wait = new WebDriverWait(driver, 1000);
 
         find(text);
-        wait.until(sizeOf(searchResults, 10));
-        searchResults.get(0).findElement(By.cssSelector(".r>a")).click();
+        wait.until(sizeOf(results, 10));
+        results.get(0).findElement(By.cssSelector(".r>a")).click();
         wait.until(urlMatches("http://www.seleniumhq.org/"));
     }
 }
