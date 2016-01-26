@@ -42,7 +42,7 @@ public class CustomConditions{
         };
     }
 
-    public static ExpectedCondition<Boolean> NthElementIsEnabled(final List<WebElement> elements, final int index) {
+    public static ExpectedCondition<Boolean> NthElementIsEnabled(final int index, final List<WebElement> elements) {
         return new ExpectedCondition<Boolean>() {
 
             public Boolean apply(WebDriver driver) {

@@ -12,22 +12,32 @@ import java.util.List;
 
 public class GoogleSearchPage {
 
+    WebDriver driver;
+
     @FindBy(name = "q")
     public WebElement searchField;
 
     @FindBy(css = ".srg>.g")
     public List<WebElement> results;
 
+    public GoogleSearchPage(WebDriver driver){
+        this.driver = driver;
+    }
+
     public void search(String text){
         searchField.sendKeys(text + Keys.ENTER);
     }
 
-    public void openNthLinkInList(int number, List<WebElement> list, WebDriver driver){
-        new WebDriverWait(driver, 10).until(CustomConditions.NthElementIsEnabled(list, number));
-        results.get(number).findElement(By.cssSelector(".r>a")).click();
+    public WebElement getNthElementFromTheList(int index, List<WebElement> elements) {
+        new WebDriverWait(driver, 10).until(CustomConditions.NthElementIsEnabled(index, elements));
+        return elements.get(index);
     }
 
-    public static void ensureGooglePageIsOpened(WebDriver driver){
+    public void openNthLinkInList(int index, List<WebElement> elements){
+        getNthElementFromTheList(index, elements).findElement(By.cssSelector(".r>a")).click();
+    }
+
+    public void ensureGooglePageIsOpened(){
         if (!"Google".equals(driver.getTitle())) {
             driver.get("https://www.google.com/ncr");
         }
