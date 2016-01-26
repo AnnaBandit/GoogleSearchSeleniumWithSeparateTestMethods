@@ -22,9 +22,15 @@ public class GoogleSearchPage {
         searchField.sendKeys(text + Keys.ENTER);
     }
 
-    public void openNthLink(WebDriver driver, List<WebElement> list, int number){
+    public void openNthLinkInList(int number, List<WebElement> list, WebDriver driver){
         new WebDriverWait(driver, 10).until(CustomConditions.NthElementIsEnabled(list, number));
         results.get(number).findElement(By.cssSelector(".r>a")).click();
+    }
+
+    public static void ensureGooglePageIsOpened(WebDriver driver){
+        if (!"Google".equals(driver.getTitle())) {
+            driver.get("https://www.google.com/ncr");
+        }
     }
 }
 
