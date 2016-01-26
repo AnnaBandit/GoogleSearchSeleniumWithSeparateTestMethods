@@ -37,4 +37,17 @@ public class CustomConditions{
             }
         };
     }
+
+    public static ExpectedCondition<Boolean> NthElementIsEnabled(final List<WebElement> elements, final int index) {
+        return new ExpectedCondition<Boolean>() {
+            public Boolean apply(WebDriver driver) {
+                try {
+                    return elements.get(index).isEnabled();
+                } catch (IndexOutOfBoundsException ex) {
+                    return false;
+                }
+            }
+        };
+    }
+
 }
