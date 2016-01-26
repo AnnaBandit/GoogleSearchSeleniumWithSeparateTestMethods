@@ -47,6 +47,10 @@ public class CustomConditions{
                     return false;
                 }
             }
+
+            public String toString(){
+                return String.format("There is no element number %s in the list", index);
+            }
         };
     }
 
