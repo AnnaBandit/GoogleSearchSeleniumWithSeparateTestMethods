@@ -28,13 +28,13 @@ public class GoogleSearchPage {
         searchField.sendKeys(text + Keys.ENTER);
     }
 
-    public WebElement getNthElementFromTheList(int index, List<WebElement> elements) {
-        new WebDriverWait(driver, 10).until(CustomConditions.NthElementIsEnabled(index, elements));
-        return elements.get(index);
+    public WebElement getNthElementFromTheList(int index) {
+        new WebDriverWait(driver, 10).until(CustomConditions.NthElementIsEnabled(index, results));
+        return results.get(index);
     }
 
-    public void openNthLinkInList(int index, List<WebElement> elements){
-        getNthElementFromTheList(index, elements).findElement(By.cssSelector(".r>a")).click();
+    public void openNthLinkInList(int index){
+        getNthElementFromTheList(index).findElement(By.cssSelector(".r>a")).click();
     }
 
     public void ensureGooglePageIsOpened(){
