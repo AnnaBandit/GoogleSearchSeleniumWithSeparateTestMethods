@@ -26,8 +26,8 @@ public class GoogleSearchTest extends AtGoogleSearchPageWithCreatedDriver {
     @Test
     public void testFollowLink(){
         googleSearchPage.search("Selenium automates browsers");
-        wait.until(CustomConditions.NthElementIsEnabled(googleSearchPage.results, 0));
-        googleSearchPage.openNthLink(0);
-        wait.until(titleIs("Selenium - Web Browser Automation"));
+        wait.until(CustomConditions.NthElementIsEnabled(googleSearchPage.results, 6));
+        googleSearchPage.openNthLink(6);
+        wait.until(titleIs("Selenium Tutorial For Beginners"));
     }
 }
