@@ -5,12 +5,10 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.WebDriverWait;
-import ua.com.anya.core.CustomConditions;
 
 import java.util.List;
 
-public class GoogleSearchPage {
+public class GoogleSearchPage extends BasePage {
 
     WebDriver driver;
 
@@ -28,13 +26,8 @@ public class GoogleSearchPage {
         searchField.sendKeys(text + Keys.ENTER);
     }
 
-    public WebElement getNthElementFromTheList(int index) {
-        new WebDriverWait(driver, 10).until(CustomConditions.NthElementIsEnabled(index, results));
-        return results.get(index);
-    }
-
     public void openNthLinkInList(int index){
-        getNthElementFromTheList(index).findElement(By.cssSelector(".r>a")).click();
+        get(index, results, driver).findElement(By.cssSelector(".r>a")).click();
     }
 
     public void ensureGooglePageIsOpened(){

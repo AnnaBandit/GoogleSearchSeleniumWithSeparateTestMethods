@@ -24,15 +24,12 @@ public class GoogleSearchTest extends BaseTest{
         googleSearchPage.search("Selenium automates browsers");
         wait.until(listNthElementHasText(googleSearchPage.results, 0, "Selenium automates browsers"));
         wait.until(sizeOf(googleSearchPage.results, 10));
-
-        googleSearchPage.openNthLinkInList(0);
-        wait.until(titleIs("Selenium - Web Browser Automation"));
     }
 
     @Test
     public void testFollowLink(){
         googleSearchPage.search("Selenium automates browsers");
-        googleSearchPage.openNthLinkInList(6);
-        wait.until(titleIs("Selenium Tutorial For Beginners"));
+        googleSearchPage.openNthLinkInList(1);
+        wait.until(titleIs("Introduction — Selenium Documentation"));
     }
 }

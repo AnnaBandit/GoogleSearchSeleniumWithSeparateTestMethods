@@ -42,19 +42,18 @@ public class CustomConditions{
         };
     }
 
-    public static ExpectedCondition<Boolean> NthElementIsEnabled(final int index, final List<WebElement> elements) {
+    public static ExpectedCondition<Boolean> listHasSizeMoreThan(final List<WebElement> elements, final int size) {
         return new ExpectedCondition<Boolean>() {
-
             public Boolean apply(WebDriver driver) {
                 try {
-                    return elements.get(index).isEnabled();
+                    return elements.size()>size;
                 } catch (IndexOutOfBoundsException ex) {
                     return false;
                 }
             }
 
             public String toString(){
-                return String.format("There is no element number %s in the list", index);
+                return String.format("The list has less elements than expected %s", size);
             }
         };
     }
