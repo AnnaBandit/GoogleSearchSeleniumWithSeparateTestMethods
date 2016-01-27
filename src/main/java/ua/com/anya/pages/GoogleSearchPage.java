@@ -5,6 +5,7 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
 import java.util.List;
 
@@ -12,7 +13,7 @@ import static ua.com.anya.core.Helpers.get;
 
 public class GoogleSearchPage {
 
-    WebDriver driver;
+    private WebDriver driver;
 
     @FindBy(name = "q")
     public WebElement searchField;
@@ -21,6 +22,7 @@ public class GoogleSearchPage {
     public List<WebElement> results;
 
     public GoogleSearchPage(WebDriver driver){
+        PageFactory.initElements(driver, this);
         this.driver = driver;
     }
 
