@@ -20,7 +20,7 @@ public class GoogleSearchTest extends BaseTest{
     }
 
     @Test
-    public void testGoogleSearch(){
+    public void testSearch(){
         googleSearchPage.search("Selenium automates browsers");
         wait.until(listNthElementHasText(googleSearchPage.results, 0, "Selenium automates browsers"));
         wait.until(sizeOf(googleSearchPage.results, 10));

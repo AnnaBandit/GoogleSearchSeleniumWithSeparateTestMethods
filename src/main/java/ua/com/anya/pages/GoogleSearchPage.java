@@ -8,7 +8,7 @@ import org.openqa.selenium.support.FindBy;
 
 import java.util.List;
 
-import static ua.com.anya.core.CommonMethods.get;
+import static ua.com.anya.core.Helpers.get;
 
 public class GoogleSearchPage {
 

@@ -44,8 +44,11 @@ public class CustomConditions{
 
     public static ExpectedCondition<Boolean> listHasSizeMoreThan(final List<WebElement> elements, final int size) {
         return new ExpectedCondition<Boolean>() {
+            private int actualSize;
+
             public Boolean apply(WebDriver driver) {
                 try {
+                    actualSize = elements.size();
                     return elements.size()>size;
                 } catch (IndexOutOfBoundsException ex) {
                     return false;
@@ -53,7 +56,7 @@ public class CustomConditions{
             }
 
             public String toString(){
-                return String.format("The list has less elements than expected %s", size);
+                return String.format("Actual list size is %s, expected size is not less than %s", actualSize, size);
             }
         };
     }
