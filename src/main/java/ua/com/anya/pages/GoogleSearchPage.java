@@ -8,7 +8,9 @@ import org.openqa.selenium.support.FindBy;
 
 import java.util.List;
 
-public class GoogleSearchPage extends BasePage {
+import static ua.com.anya.core.CommonMethods.get;
+
+public class GoogleSearchPage {
 
     WebDriver driver;
 
@@ -27,7 +29,7 @@ public class GoogleSearchPage extends BasePage {
     }
 
     public void openNthLinkInList(int index){
-        get(index, results, driver).findElement(By.cssSelector(".r>a")).click();
+        get(results, index, driver).findElement(By.cssSelector(".r>a")).click();
     }
 
     public void ensureGooglePageIsOpened(){

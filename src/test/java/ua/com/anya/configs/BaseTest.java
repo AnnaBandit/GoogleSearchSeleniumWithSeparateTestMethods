@@ -5,11 +5,12 @@ import org.junit.BeforeClass;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import ua.com.anya.Configuration;
 
 public class BaseTest {
 
     public static WebDriver driver;
-    public WebDriverWait wait = new WebDriverWait(driver, 10);
+    public WebDriverWait wait = new WebDriverWait(driver, Configuration.timeout);
 
     @BeforeClass
     public static void setUp(){
