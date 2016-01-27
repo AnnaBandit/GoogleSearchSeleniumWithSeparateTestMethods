@@ -11,11 +11,11 @@ import static ua.com.anya.core.CustomConditions.listHasSizeMoreThan;
 
 public class Helpers {
 
-    public static void wait(ExpectedCondition condition, WebDriver driver){
+    public static void assertThat(ExpectedCondition condition, WebDriver driver){
         new WebDriverWait(driver, Configuration.timeout).until(condition);
     }
 
-    public static void wait(ExpectedCondition condition, WebDriver driver, int timeout){
+    public static void assertThat(ExpectedCondition condition, WebDriver driver, int timeout){
         new WebDriverWait(driver, timeout).until(condition);
     }
 
@@ -24,7 +24,7 @@ public class Helpers {
     }
 
     public static WebElement get(List<WebElement> elements, int index, WebDriver driver, int timeout) {
-        new WebDriverWait(driver, timeout).until(listHasSizeMoreThan(elements, index));
+        assertThat(listHasSizeMoreThan(elements, index), driver);
         return elements.get(index);
     }
 }
