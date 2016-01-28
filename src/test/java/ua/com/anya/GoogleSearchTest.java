@@ -1,8 +1,3 @@
-/*
-че-то я не поняла как можно сделать, чтоб не писать Helpers.wait
-или так, или у wait нужно название поменять))
-*/
-
 package ua.com.anya;
 
 import org.junit.Before;
