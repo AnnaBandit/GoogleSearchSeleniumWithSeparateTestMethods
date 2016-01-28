@@ -24,7 +24,7 @@ public class Helpers {
     }
 
     public static WebElement get(List<WebElement> elements, int index, WebDriver driver, int timeout) {
-        assertThat(listHasSizeMoreThan(elements, index), driver);
+        assertThat(listHasSizeMoreThan(elements, index), driver, timeout);
         return elements.get(index);
     }
 }
